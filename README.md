@@ -13,4 +13,4 @@ Este projeto tem como objetivo apresentar a importância da Educação Física n
 
 ## Links úteis
 - Link do repositório
-- Link do site publicado no GitHub Pages
+- [Link do site publicado no GitHub Pages](https://gerencia-de-configuracao-e-mudancas.github.io/projeto-final-educacao-fisica-escolar/)
