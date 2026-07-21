@@ -5,6 +5,7 @@ Este projeto tem como objetivo apresentar a importância da Educação Física n
 
 ## Contribuidores
 - Renan Soares Bezerra
+- Luiz Fernando Deuter da Cunha
 
 
 ## Tecnologias utilizadas
