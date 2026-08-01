@@ -17,20 +17,23 @@
 
     <nav>
       <a href="index.html">Início</a>
-      <a href="esportes.html">Esportes</a>
+      <a href="esportes.html" class="active">Esportes</a>
       <a href="saude.html">Saúde</a>
     </nav>
   </header>
 
   <section class="banner-pagina">
     <h1>Esportes na Escola</h1>
-    <p>Aprendizagem, saúde, cooperação e desenvolvimento por meio das práticas esportivas.</p>
+    <p>
+      Aprendizagem, saúde, cooperação e desenvolvimento por meio das práticas esportivas.
+    </p>
   </section>
 
   <main class="pagina">
 
     <section class="intro">
       <h2>Esportes na Educação Física Escolar</h2>
+
       <p>
         Os esportes são importantes ferramentas educativas. Além de desenvolver habilidades físicas,
         eles ajudam na construção de valores como respeito, disciplina, cooperação e responsabilidade.
@@ -39,37 +42,50 @@
 
     <section class="lista">
 
-      <div>
+      <div data-descricao="Esporte de invasão jogado predominantemente com os pés, onde duas equipes buscam o gol. Na Educação Física, desenvolve a visão periférica, o controle motor dos membros inferiores, a tomada de decisão em ritmo acelerado e a liderança coletiva.">
         <h3>⚽ Futebol</h3>
-        <p>Desenvolve resistência física, coordenação motora, trabalho em equipe e tomada de decisão.</p>
+        <p>
+          Desenvolve resistência física, coordenação motora, trabalho em equipe e tomada de decisão.
+        </p>
       </div>
 
-      <div>
+      <div data-descricao="Modalidade sem contato físico direto entre os adversários, dividida por uma rede elevada. Trabalha a impulsão, reflexos rápidos, leitura de trajetória e, principalmente, a comunicação verbal e a confiança mútua para a construção das jogadas.">
         <h3>🏐 Voleibol</h3>
-        <p>Estimula a comunicação, a agilidade, a coordenação e a cooperação entre os participantes.</p>
+        <p>
+          Estimula a comunicação, a agilidade, a coordenação e a cooperação entre os participantes.
+        </p>
       </div>
 
-      <div>
+      <div data-descricao="Jogo dinâmico de transições rápidas cujo objetivo é pontuar na cesta adversária. Estimula a coordenação óculo-manual, o equilíbrio, o raciocínio tático sob pressão e a concentração, além de exigir constante movimentação em quadra.">
         <h3>🏀 Basquete</h3>
-        <p>Melhora a velocidade, o raciocínio rápido, a coordenação e a capacidade de estratégia.</p>
+        <p>
+          Melhora a velocidade, o raciocínio rápido, a coordenação e a capacidade de estratégia.
+        </p>
       </div>
 
-      <div>
+      <div data-descricao="Esporte de ritmo veloz focado no passe e arremesso com as mãos. Fortalece a musculatura do tronco e membros superiores, aprimora a percepção de espaço, o tempo de reação e o respeito à integridade física do colega nos momentos de contato.">
         <h3>🤾 Handebol</h3>
-        <p>Contribui para o fortalecimento muscular, resistência e trabalho coletivo.</p>
+        <p>
+          Contribui para o fortalecimento muscular, resistência e trabalho coletivo.
+        </p>
       </div>
 
-      <div>
+      <div data-descricao="Dinâmicas em que o desafio é superado com a união de todos, eliminando a lógica de vencedores e perdedores. Focam no desenvolvimento socioemocional, na escuta ativa, na empatia e na integração de diferentes níveis de habilidade.">
         <h3>🎯 Jogos Cooperativos</h3>
-        <p>Valorizam a participação de todos e promovem inclusão, respeito e solidariedade.</p>
+        <p>
+          Valorizam a participação de todos e promovem inclusão, respeito e solidariedade.
+        </p>
       </div>
 
-      <div>
+      <div data-descricao="Conjunto de práticas ancestrais dividido em corridas, saltos e arremessos, considerado a base dos esportes. Promove o autoconhecimento corporal, a disciplina, a autossuperação e o desenvolvimento de capacidades físicas como potência e resistência.">
         <h3>🏃 Atletismo</h3>
-        <p>Desenvolve velocidade, resistência, equilíbrio e autossuperação.</p>
+        <p>
+          Desenvolve velocidade, resistência, equilíbrio e autossuperação.
+        </p>
       </div>
 
     </section>
+
     <section class="intro">
       <h2>Como começar a praticar exercícios</h2>
 
@@ -88,6 +104,7 @@
     </section>
 
     <section class="lista">
+
       <div>
         <h3>🔥 Faça aquecimento</h3>
         <p>
@@ -130,12 +147,52 @@
           Escolha dias e horários para praticar exercícios com regularidade.
         </p>
       </div>
+
     </section>
+
   </main>
 
   <footer>
     <p>Projeto Final - GCM | Educação Física na Escola</p>
   </footer>
+
+  <script>
+    const modal = document.createElement("div");
+    modal.className = "modal";
+
+    modal.innerHTML = `
+      <div class="modal-conteudo">
+        <span class="fechar">&times;</span>
+        <h2 id="tituloModal"></h2>
+        <p id="textoModal"></p>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const titulo = document.getElementById("tituloModal");
+    const texto = document.getElementById("textoModal");
+
+    document
+      .querySelectorAll(".lista div[data-descricao]")
+      .forEach(card => {
+        card.addEventListener("click", () => {
+          titulo.textContent = card.querySelector("h3").textContent;
+          texto.textContent = card.dataset.descricao;
+          modal.classList.add("ativo");
+        });
+      });
+
+    modal.querySelector(".fechar").addEventListener("click", () => {
+      modal.classList.remove("ativo");
+    });
+
+    modal.addEventListener("click", event => {
+      if (event.target === modal) {
+        modal.classList.remove("ativo");
+      }
+    });
+  </script>
 
 </body>
 
