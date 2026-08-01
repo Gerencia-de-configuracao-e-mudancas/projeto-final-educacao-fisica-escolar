@@ -37,32 +37,32 @@
 
   <section class="lista">
 
-    <div>
+    <div data-descricao="O futebol é um esporte coletivo disputado entre duas equipes de onze jogadores. Na Educação Física Escolar, ele vai além da competição: desenvolve coordenação motora, resistência física, percepção espacial, tomada de decisões e trabalho em equipe. Também estimula valores como respeito às regras, cooperação e espírito esportivo.">
       <h3>⚽ Futebol</h3>
       <p>Desenvolve resistência física, coordenação motora, trabalho em equipe e tomada de decisão.</p>
     </div>
 
-    <div>
+    <div data-descricao="O voleibol é praticado por duas equipes separadas por uma rede, com o objetivo de fazer a bola tocar o chão da quadra adversária. Durante as aulas, favorece a comunicação, a cooperação entre os colegas, os reflexos, a coordenação motora e a agilidade, além de incentivar o respeito e a disciplina.">
       <h3>🏐 Voleibol</h3>
       <p>Estimula a comunicação, a agilidade, a coordenação e a cooperação entre os participantes.</p>
     </div>
 
-    <div>
+    <div data-descricao="O basquete é um esporte dinâmico que exige velocidade, precisão e estratégia. Nas aulas de Educação Física, contribui para o desenvolvimento da coordenação motora, do equilíbrio, do raciocínio rápido e da capacidade de trabalhar em equipe, promovendo também concentração e autocontrole.">
       <h3>🏀 Basquete</h3>
       <p>Melhora a velocidade, o raciocínio rápido, a coordenação e a capacidade de estratégia.</p>
     </div>
 
-    <div>
+    <div data-descricao="O handebol combina velocidade, força e cooperação entre os jogadores. Sua prática fortalece a resistência física, melhora a coordenação motora, os reflexos e a percepção espacial, além de estimular a comunicação, o respeito aos colegas e o trabalho coletivo.">
       <h3>🤾 Handebol</h3>
       <p>Contribui para o fortalecimento muscular, resistência e trabalho coletivo.</p>
     </div>
 
-    <div>
+    <div data-descricao="Os jogos cooperativos priorizam a colaboração em vez da competição. O objetivo é que todos os participantes trabalhem juntos para alcançar um resultado comum, promovendo inclusão, empatia, respeito às diferenças, criatividade e desenvolvimento das habilidades sociais.">
       <h3>🎯 Jogos Cooperativos</h3>
       <p>Valorizam a participação de todos e promovem inclusão, respeito e solidariedade.</p>
     </div>
 
-    <div>
+    <div data-descricao="O atletismo reúne modalidades como corridas, saltos e arremessos, sendo considerado a base de muitos outros esportes. Sua prática desenvolve velocidade, resistência, força, equilíbrio e coordenação, além de incentivar a superação pessoal, a disciplina e a busca por evolução contínua.">
       <h3>🏃 Atletismo</h3>
       <p>Desenvolve velocidade, resistência, equilíbrio e autossuperação.</p>
     </div>
@@ -74,6 +74,44 @@
 <footer>
   <p>Projeto Final - GCM | Educação Física na Escola</p>
 </footer>
+
+<script>
+const modal = document.createElement("div");
+modal.className = "modal";
+
+modal.innerHTML = `
+    <div class="modal-conteudo">
+        <span class="fechar">&times;</span>
+        <h2 id="tituloModal"></h2>
+        <p id="textoModal"></p>
+    </div>
+`;
+
+document.body.appendChild(modal);
+
+const titulo = document.getElementById("tituloModal");
+const texto = document.getElementById("textoModal");
+
+document.querySelectorAll(".lista div").forEach(card => {
+
+    card.addEventListener("click", () => {
+        titulo.textContent = card.querySelector("h3").textContent;
+        texto.textContent = card.dataset.descricao;
+        modal.classList.add("ativo");
+    });
+
+});
+
+modal.querySelector(".fechar").addEventListener("click", () => {
+    modal.classList.remove("ativo");
+});
+
+modal.addEventListener("click", e => {
+    if(e.target === modal){
+        modal.classList.remove("ativo");
+    }
+});
+</script>
 
 </body>
 </html>
